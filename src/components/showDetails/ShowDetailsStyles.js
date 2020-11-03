@@ -46,10 +46,12 @@ const useStyles = makeStyles((theme) => ({
         width: 120,
         height: 150
     },
-    // episodeImage: {
-    //     width: 150,
-    //     height: 150
-    // },
+    personName: {
+        whiteSpace: "nowrap",
+        width: theme.spacing(14),
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
+    },
     dashboard: {
         textAlign: 'right',
         marginTop: theme.spacing(3),

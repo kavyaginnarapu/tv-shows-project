@@ -15,9 +15,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import { InputBase } from '@material-ui/core';
-import axios from '../../axios';
 import { useStyles } from './HeaderMenuStyles';
-import requestApi from './../../requestApi';
+import { fetchData } from '../service';
 
 export default function HeaderMenu(props) {
   const classes = useStyles();
@@ -46,26 +45,27 @@ export default function HeaderMenu(props) {
       setOpen(false);
     }
   }
-  async function fetchData(event) {
-    let genresValue = [];
-    const request = await axios.get(requestApi.fetchShowsSearchData + `${event.target.value}`);
-    if (request.data && request.data.length > 0) {
-      request.data.map((result) => {
-        genresValue.push(result.show)
-      });
-    }
-    props.filterShowsData(genresValue);
-    props.genresName('')
-  }
+
   const handleChange = (prop) => (event) => {
-   console.log("event in handle chane===>",event)
-    fetchData(event);
-    if (event.target.value === '') {
-      window.location.reload(false)
+    let genresValue = [];
+    fetchData('search', event.target.value).then(data => {
+      if (data.length > 0) {
+        data.map((result) => {
+          genresValue.push(result.show);
+        });
+        genresValue.sort(function (a, b) {
+          return b.rating.average - a.rating.average
+        });
+      }
+      props.filterShowsData(genresValue);
       props.genresName('')
-    } else {
-      setValues({ ...values, [prop]: event.target.value });
-    }
+      if (event.target.value === '') {
+        window.location.reload(false)
+        props.genresName('')
+      } else {
+        setValues({ ...values, [prop]: event.target.value });
+      }
+    });
   };
   return (
     <div className="header-wrapper">

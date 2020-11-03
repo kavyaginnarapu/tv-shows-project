@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import axios from '../../axios';
-import requestApi from '../../requestApi';
 import ShowList from '../showDetails/ShowList';
 import Header from '../headerMenu/HeaderMenu';
 import { useStyles } from "./DashboardStyles";
+import { fetchData } from '../service';
 
 export default function Dashboard() {
   const classes = useStyles();
@@ -15,36 +14,28 @@ export default function Dashboard() {
   const [genresNames, setGenresNames] = useState('');
   const [loader, setLoader] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let genresValue = [];
     let value = [];
-    async function fetchData() {
-      axios.get(requestApi.fetchShowsData)
-        .then(response => {
-          if (response.data && response.data.length > 0) {
-            response.data.map((result) => {
-              result.genres.map((name) => {
-                genresValue.push(name)
-              })
-            })
-            let data = response.data;
-            data.sort(function (a, b) {
-              return b.rating.average - a.rating.average
-            });
-            value.push(...data);
-            let genres = [...new Set(genresValue)];
-            setGenresInfo(genres);
-            setShowsInfo(value);
-            setFilterData(value);
-            setLoader(false)
-          }
+    fetchData().then(data => {
+      data.map((result) => {
+        result.genres.map((name) => {
+          genresValue.push(name)
         })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-    fetchData();
+      })
+      let sortData = data;
+      sortData.sort(function (a, b) {
+        return b.rating.average - a.rating.average
+      });
+      value.push(...sortData);
+      let genres = [...new Set(genresValue)];
+      setGenresInfo(genres);
+      setShowsInfo(value);
+      setFilterData(value);
+      setLoader(false)
+    })
   }, []);
+
 
   const filteredData = (newValue) => {
     setFilterData(newValue);

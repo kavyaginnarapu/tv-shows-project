@@ -8,10 +8,9 @@ import { isWidthUp } from '@material-ui/core/withWidth';
 import GridList from '@material-ui/core/GridList';
 import { Link } from 'react-router-dom';
 import { useStyles } from './ShowDetailsStyles';
-import axios from '../../axios';
-import requestApi from './../../requestApi';
 import HeaderMenu from '../headerMenu/HeaderMenu';
 import imageNotLoaded from './../../images/notFound.png';
+import {fetchData} from '../service';
 
 export default function ShowDetails(props) {
   const classes = useStyles();
@@ -21,44 +20,21 @@ export default function ShowDetails(props) {
 
   useEffect(() => {
     const id = window.location.hash.slice(14);
-    async function fetchData() {
-      const episodes = await axios.get(requestApi.fetchShowsData + `/${id}/seasons`);
-      setShowSeasons(episodes.data);
+    fetchData('byMovie',id).then(movie=>{
+      console.log('byMovie',movie);
+      setShowDetailsInfo(movie);
+      setLoader(false);
+      return fetchData('bySeason',id).then(season=>{
+        console.log("bySeason",season);
+        setShowSeasons(season)
+      })
+      .catch(error => {
+        console.log(error);
+      });
 
-      axios.get(requestApi.fetchShowsData + `/${id}?embed=cast`)
-        .then(response => {
-          if (response.data) {
-            setShowDetailsInfo(response.data);
-            setLoader(false)
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
-      }
-    fetchData();
+    })
   }, [setShowDetailsInfo]);
 
-  const onSeasonSelection = (id) => {
-    // let genresValue = [];
-    // async function fetchData() {
-    //   const request = await axios.get(requestApi.fetchShowsSearchData + `${event.target.value}`);
-    //   if (request.data && request.data.length > 0) {
-    //     request.data.map((result) => {
-    //       genresValue.push(result.show)
-    //     });
-    //   }
-    //   props.filterShowsData(genresValue);
-    //   props.genresName('')
-    // }
-    // fetchData();
-    // if (event.target.value === '') {
-    //   window.location.reload(false)
-    //   props.genresName('')
-    // } else {
-    //   setValues({ ...values, [prop]: event.target.value });
-    // }
-  };
   const getGridListCols = () => {
     if (isWidthUp('xl', props.width)) { return 6; }
 
@@ -135,7 +111,7 @@ export default function ShowDetails(props) {
               showSeasons && showSeasons.map((season) => {
                 console.log("season",season)
                 return (
-                  <GridListTile onClick ={()=>onSeasonSelection(season.id)}
+                  <GridListTile
                     style={{ padding: '8px' }}>
                     <img src={(season && season.image && season.image.medium) ?
                       season.image.medium : imageNotLoaded}
@@ -157,14 +133,13 @@ export default function ShowDetails(props) {
           <GridList cellHeight={200} className={classes.gridList} cols={getGridListCols} >
             {
               showDetailsInfo._embedded && showDetailsInfo._embedded.cast.map((actor, id) => {
-
                 return (
                   <GridListTile
                     style={{ padding: '8px' }}>
                     <img src={(actor.person.image && actor.person.image.medium) ?
                       actor.person.image.medium : imageNotLoaded}
                       alt={'cast'} className={classes.movieImage} />
-                    <Typography variant={'subtitle2'}>{actor.person.name}</Typography>
+                    <Typography variant={'subtitle2'} className={classes.personName}>{actor.person.name}</Typography>
                   </GridListTile>
                 )
               })
