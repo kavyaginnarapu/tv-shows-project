@@ -27,14 +27,14 @@ const useStyles = makeStyles((theme) => ({
         // backgroundColor: '#3f50b5'
     },
     paper: {
-        paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(2),
-        margin: theme.spacing(1),
+        // paddingLeft: theme.spacing(2),
+        // paddingRight: theme.spacing(2),
+        // margin: theme.spacing(1),
         color: theme.palette.text.secondary,
     },
     summary: {
         fontWeight: 'bold',
-        paddingLeft: theme.spacing(3),
+        // paddingLeft: theme.spacing(3),
         // paddingTop: theme.spacing(2),
         fontSize: theme.spacing(3)
     },

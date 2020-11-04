@@ -98,16 +98,13 @@ describe("Header menu component", () => {
     afterEach(() => {
         jest.clearAllMocks();
     });
-    // test('has a wrapper instance', () => {​​
-    //     expect(wrapper.instance()).toBeTruthy();
-    //   }​​);
 
     it("should render header component", () => {
         expect(wrapper.find(".header-wrapper")).toHaveLength(1);
     });
 
     it("should render checking header text", () => {
-        expect(wrapper.find("[data-test='header-text']").text()).toEqual('TV SHOWS');
+        expect(wrapper.find("[data-test='header-text']").text()).toEqual('TVMAZE');
     });
 
     it("should render checking Drawer(genres) list length", () => {
@@ -125,26 +122,7 @@ describe("Header menu component", () => {
     it("should render  checkin onclick dwawer open function on navigation genres", () => {
         wrapper.find("[data-test='drawer-open']").simulate('click')
         expect(wrapper.find("[data-test='drawer-tag']").prop('open')).toBe(true);
-    });
-
-    // wrapper.find("[data-test='genres-selection']").at(2).simulate('click','Drama');
-
-    it("api call test running header onchange", () => {
-        // wrapper.instance().fetchData = jest.fn();
-
-         let event = { target: { value: 'girls' } };
-        // const fetchData = jest.fn();
-        // wrapper.find("[data-test='search-movies']").simulate('change', event);
-        // expect(wrapper.instance())
-        console.log("onchnage==>", wrapper.instance());
-        wrapper.instance().fetchData = jest.fn();
-        wrapper.update();
-        wrapper.instance().handleChange(event);
-        expect(wrapper.instance().fetchData).toBeCalledWith(event);
-    });
-
-
-
+    });   
 
 });
 

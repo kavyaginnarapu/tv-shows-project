@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Link } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import Paper from '@material-ui/core/Paper';
 import ListItem from '@material-ui/core/ListItem';
@@ -88,7 +89,10 @@ export default function HeaderMenu(props) {
               <MenuIcon />
             </IconButton>
           }
-          <Typography variant="h6" noWrap data-test="header-text">TV SHOWS</Typography>
+          <Link to="/"  className={classes.navigation}>
+          <Typography variant="h6"  data-test="header-text"  className={classes.headerName}>TVMAZE</Typography>
+
+          </Link>
           {!window.location.hash.includes('showdetails') &&
             <Paper component="form" className={classes.search} style={{ textAlign: 'right' }}>
 

@@ -11,7 +11,6 @@ describe("Header menu component", () => {
         jest.clearAllMocks();
     });
     it("should render checking breadcrumb text", () => {
-        console.log("text===>",wrapper.find("[data-test='breadcrumb-dashboard']").debug())
         expect(wrapper.find("[data-test='breadcrumb-dashboard']").text()).toEqual('Dashboard');
     });
     

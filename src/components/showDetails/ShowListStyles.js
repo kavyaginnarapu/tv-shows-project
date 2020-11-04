@@ -7,17 +7,17 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-around',
     },
     gridList: {
-        paddingLeft: '30px',
+        paddingLeft: '24px',
         width: 'auto',
         height: 'auto',
     },
     breadcrumb: {
-        margin: '2px',
-        paddingLeft: '30px'
+        margin: '1px',
+        paddingLeft: '24px'
     },
     movieImage: {
         height: 300,
-        width: 180
+        width: 'auto'
     },
     icon: {
         pointerEvents: 'none',

@@ -81,6 +81,12 @@ const useStyles = makeStyles((theme) => ({
     },
     iconButton: {
         padding: 10,
+    },
+    headerName: {
+        color: 'white'
+    },
+    navigation: {
+        textDecoration: 'none',
     }
 }));
 
