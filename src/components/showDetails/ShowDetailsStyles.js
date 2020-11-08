@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100%'
     },
     movieImage: {
-        width: 120,
+        width: '100%',
         height: 150
     },
     personName: {

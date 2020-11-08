@@ -39,4 +39,8 @@ describe("renders show list component", () => {
         expect(wrapper.find("[data-test='pagination-sample']").text()).toEqual('No movies found');
 
     });
+    // it("should render  checkin onclick function on close drawer", () => {
+    //     wrapper.find("[data-test='handle-drawer']").simulate('click');
+    //     expect(wrapper.find("[data-test='drawer-tag']").prop('open')).toBe(false);
+    // });
 });

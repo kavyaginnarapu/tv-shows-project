@@ -46,17 +46,18 @@ export default function Dashboard() {
   const genresName = (genresName) => {
     setGenresNames(genresName);
   }
-
+ 
   return (
     <div>
       {loader ? <div></div> :
-        <div className={classes.root} data-test="dashboard-main">
+        <div className={classes.root} data-test="dashboard-main" id="scroller">
           <Header showsInfo={showsInfo} genresInfo={genresInfo} filterGenresData={filteredData}
             filterShowsData={filterShowsData} genresName={genresName} />
           <main className={clsx(classes.content, { [classes.contentShift]: open, })} >
             <div className={classes.drawerHeader} />
             <ShowList data={filterData} genresName={genresNames} />
           </main>
+          
         </div>
       }
     </div>

@@ -1,4 +1,4 @@
-import axios from '../axios';
+import axios from 'axios';
 import requestApi from '../requestApi';
 
 export const fetchData = (type,id)=>{
