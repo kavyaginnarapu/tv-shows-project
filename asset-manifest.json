@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/tv-shows-project/static/css/main.fc4cb43c.chunk.css",
-    "main.js": "/tv-shows-project/static/js/main.8783bab0.chunk.js",
-    "main.js.map": "/tv-shows-project/static/js/main.8783bab0.chunk.js.map",
+    "main.js": "/tv-shows-project/static/js/main.687e402c.chunk.js",
+    "main.js.map": "/tv-shows-project/static/js/main.687e402c.chunk.js.map",
     "runtime-main.js": "/tv-shows-project/static/js/runtime-main.5798d259.js",
     "runtime-main.js.map": "/tv-shows-project/static/js/runtime-main.5798d259.js.map",
-    "static/js/2.1c909bd4.chunk.js": "/tv-shows-project/static/js/2.1c909bd4.chunk.js",
-    "static/js/2.1c909bd4.chunk.js.map": "/tv-shows-project/static/js/2.1c909bd4.chunk.js.map",
+    "static/js/2.11126042.chunk.js": "/tv-shows-project/static/js/2.11126042.chunk.js",
+    "static/js/2.11126042.chunk.js.map": "/tv-shows-project/static/js/2.11126042.chunk.js.map",
     "index.html": "/tv-shows-project/index.html",
     "static/css/main.fc4cb43c.chunk.css.map": "/tv-shows-project/static/css/main.fc4cb43c.chunk.css.map",
-    "static/js/2.1c909bd4.chunk.js.LICENSE.txt": "/tv-shows-project/static/js/2.1c909bd4.chunk.js.LICENSE.txt"
+    "static/js/2.11126042.chunk.js.LICENSE.txt": "/tv-shows-project/static/js/2.11126042.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5798d259.js",
-    "static/js/2.1c909bd4.chunk.js",
+    "static/js/2.11126042.chunk.js",
     "static/css/main.fc4cb43c.chunk.css",
-    "static/js/main.8783bab0.chunk.js"
+    "static/js/main.687e402c.chunk.js"
   ]
 }
