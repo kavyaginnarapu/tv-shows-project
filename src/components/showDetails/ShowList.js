@@ -70,7 +70,7 @@ export default function ShowList(props) {
               props && props.data.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((tile) => {
                 return (
                   <GridListTile
-                    key={tile.image && tile.image.medium}
+                    key={tile.id}
                     style={{ padding: '6px' }}>
                     <Link to={`/showdetails/${tile.id}`} key={tile.image && tile.image.medium}>
                       <img src={(tile.image && tile.image.medium) ? tile.image && tile.image.medium : ImageNotFound} alt={'image not loaded'}
@@ -103,7 +103,9 @@ export default function ShowList(props) {
 
           {showsInfo.length === 0 ?
             <div data-test="pagination-sample">No movies found</div> :
-            <Pagination
+            <div>
+              {showsInfo.length >=16 &&
+              <Pagination
               count={noOfPages}
               page={page}
               onChange={handleChange}
@@ -114,6 +116,8 @@ export default function ShowList(props) {
               showLastButton
               classes={{ ul: classes.paginator }}
             />}
+            
+            </div>}
         </div>
         <ScrollToTop smooth style={{ backgroundColor: '#3f50b5', color: "#0000ff" }} />
       </div>}

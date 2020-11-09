@@ -57,7 +57,7 @@ export default function HeaderMenu(props) {
         genresValue.sort(function (a, b) {
           return b.rating.average - a.rating.average
         });
-      }
+      } 
 
       props.filterShowsData(genresValue);
       props.genresName('')
