@@ -25,16 +25,10 @@ export default function ShowDetails(props) {
   const width = useWidth();
   if (width === "xs") {
     widthSize = 2;
-  } else if (width === "lg") {
-    widthSize = 9;
-  } else if (width === "md") {
-    widthSize = 9;
-  } else if (width === "sm") {
-    widthSize = 2;
-  } else if (width === "xl") {
+  } else if (width === "lg" || width === "md" ||  width === "xl") {
     widthSize = 9;
   } else {
-    widthSize = 2;
+    widthSize = 3;
   }
 
   React.useEffect(() => {
@@ -127,11 +121,9 @@ export default function ShowDetails(props) {
                       return (
                         <GridListTile key={season.id}
                           style={{ padding: '7px' }}>
-                          <Link to={`/episodeDetails/${season.id}`} key={season.image && season.image.medium}>
                             <img src={(season && season.image && season.image.medium) ?
                               season.image.medium : ImageNotFound}
                               alt={'season'} className={classes.movieImage} />
-                          </Link>
                           <Typography variant={'subtitle2'} className={classes.personName}>{season.name || 'Season ' + season.number}</Typography>
                         </GridListTile>
                       )
