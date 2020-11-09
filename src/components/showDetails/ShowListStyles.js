@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     movieImage: {
         height: 300,
         width: '100%'
-        
+
     },
     icon: {
         pointerEvents: 'none',

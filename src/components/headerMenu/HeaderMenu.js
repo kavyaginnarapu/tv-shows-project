@@ -58,10 +58,11 @@ export default function HeaderMenu(props) {
           return b.rating.average - a.rating.average
         });
       }
+
       props.filterShowsData(genresValue);
       props.genresName('')
       if (event.target.value === '') {
-        window.location.reload(false)
+        window.location.reload()
         props.genresName('')
       } else {
         setValues({ ...values, [prop]: event.target.value });
@@ -89,8 +90,8 @@ export default function HeaderMenu(props) {
               <MenuIcon />
             </IconButton>
           }
-          <Link to="/"  className={classes.navigation}>
-          <Typography variant="h6"  data-test="header-text"  className={classes.headerName}>TVMAZE</Typography>
+          <Link to="/" className={classes.navigation}>
+            <Typography variant="h6" data-test="header-text" className={classes.headerName}>TVMAZE</Typography>
 
           </Link>
           {!window.location.hash.includes('showdetails') &&

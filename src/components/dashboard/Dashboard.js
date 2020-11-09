@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import ShowList from '../showDetails/ShowList';
 import Header from '../headerMenu/HeaderMenu';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { useStyles } from "./DashboardStyles";
 import { fetchData } from '../service';
 
@@ -46,10 +47,10 @@ export default function Dashboard() {
   const genresName = (genresName) => {
     setGenresNames(genresName);
   }
- 
+
   return (
     <div>
-      {loader ? <div></div> :
+      {loader ? <CircularProgress /> :
         <div className={classes.root} data-test="dashboard-main" id="scroller">
           <Header showsInfo={showsInfo} genresInfo={genresInfo} filterGenresData={filteredData}
             filterShowsData={filterShowsData} genresName={genresName} />
@@ -57,7 +58,7 @@ export default function Dashboard() {
             <div className={classes.drawerHeader} />
             <ShowList data={filterData} genresName={genresNames} />
           </main>
-          
+
         </div>
       }
     </div>

@@ -1,31 +1,29 @@
 import React from 'react';
-import { shallow,mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import ShowDetails from './ShowDetails';
-describe("Header menu component", () => {
-   let wrapper;
-   let useEffect;
 
-   const mockUseEffect = ()=>{
-    useEffect.mockImplementation (f => f());
-    }   
+global.window = Object.create(window);
+const url = "#/showdetails/169"
+Object.defineProperty(window, 'location', {
+    value: {
+        hash: url
+    }
+});
+
+jest.mock("axios");
+
+describe("SHOW DEATILS menu component", () => {
+    let wrapper;
+
     beforeEach(() => {
-        useEffect = jest.spyOn(React,'useEffect');
-        mockUseEffect();
-        wrapper = shallow(<ShowDetails/>)
+
+        wrapper = shallow(<ShowDetails />)
     });
 
-    afterEach(()=>{
+    afterEach(() => {
         jest.clearAllMocks();
     });
     it("should render checking breadcrumb text", () => {
-        // expect(wrapper.find("[data-test='breadcrumb-dashboard']").text()).toEqual('Dashboard');
-        console.log("dashboard==>",wrapper.find("[data-test='breadcrumb-dashboard']").text())
+        wrapper.find("[data-test='breadcrumb-dashboard']")
     });
-
-    // it("testing",()=>{
-    //     console.log("shodeta wrapper",wrapper.debug())
-    // })    
-    
 });
-   
-  

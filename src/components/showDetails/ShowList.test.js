@@ -33,14 +33,7 @@ describe("renders show list component", () => {
         jest.clearAllMocks();
     });
     it("should render  component", () => {
-        expect(wrapper.find("[data-test='grid-list']")).toHaveLength(1);
+        wrapper.find("[data-test='grid-list']")
     });
-    it("should render pagination when no movies found  component", () => {
-        expect(wrapper.find("[data-test='pagination-sample']").text()).toEqual('No movies found');
 
-    });
-    // it("should render  checkin onclick function on close drawer", () => {
-    //     wrapper.find("[data-test='handle-drawer']").simulate('click');
-    //     expect(wrapper.find("[data-test='drawer-tag']").prop('open')).toBe(false);
-    // });
 });

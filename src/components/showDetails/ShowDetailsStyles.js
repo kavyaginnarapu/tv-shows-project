@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     breadcrumb: {
         marginTop: '4px',
         marginBottom: '4px',
+        marginLeft: '1px'
     },
     paperHead: {
         fontSize: theme.spacing(3),
@@ -24,18 +25,16 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2),
         marginBottom: theme.spacing(1),
         marginTop: theme.spacing(1),
-        // backgroundColor: '#3f50b5'
     },
     paper: {
-        // paddingLeft: theme.spacing(2),
-        // paddingRight: theme.spacing(2),
-        // margin: theme.spacing(1),
         color: theme.palette.text.secondary,
+    },
+    fontInfo: {
+        fontFamily: ['Arial'],
+        color: 'black'
     },
     summary: {
         fontWeight: 'bold',
-        // paddingLeft: theme.spacing(3),
-        // paddingTop: theme.spacing(2),
         fontSize: theme.spacing(3)
     },
     imageDisplay: {
